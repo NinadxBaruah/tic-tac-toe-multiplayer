@@ -1,0 +1,540 @@
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
+* {
+  box-sizing: border-box;
+  /* outline: 2px solid greenyellow; */
+  font-family: 'Press Start 2P', cursive;
+
+}
+
+:root {
+  --cell-border-color: #00ff00;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  height: 100%;
+  margin: 0;
+  width: auto;
+  background-color: #0c0c0c;
+}
+
+.game-container {
+  text-align: center;
+}
+
+h1 {
+  margin-bottom: 20px;
+  color: #00ff00;
+  text-shadow: 2px 2px 4px #00ff00;
+}
+
+.board {
+  display: grid;
+  grid-template-columns: repeat(3, 100px);
+  grid-template-rows: repeat(3, 100px);
+  gap: 0;
+  /* No gap for traditional board style */
+  margin: 20px auto;
+  width: auto;
+  margin-left: 7%;
+}
+
+.cell {
+  width: 100px;
+  height: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 2rem;
+  background-color: #0c0c0c;
+  border-collapse: collapse;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+@keyframes scaleIn {
+  0% {
+    transform: scale(1.5);
+  }
+
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes blink {
+
+  0%,
+  100% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0;
+  }
+}
+
+.blink {
+  animation: blink 0.5s ease-in-out 0s 2;
+}
+
+.cell span {
+  color: #00ff00;
+  font-weight: bold;
+  font-size: clamp(50px, 2vw, 9vw);
+  text-shadow: 1px 1px 2px #00ff00;
+  animation: scaleIn 0.3s ease-in-out;
+}
+
+.cell:nth-child(1),
+.cell:nth-child(2),
+.cell:nth-child(3) {
+  border-bottom: 3px solid var(--cell-border-color);
+  /* Top row */
+}
+
+.cell:nth-child(4),
+.cell:nth-child(5),
+.cell:nth-child(6) {
+  border-top: 3px solid var(--cell-border-color);
+  /* Middle row */
+  border-bottom: 3px solid var(--cell-border-color);
+}
+
+.cell:nth-child(7),
+.cell:nth-child(8),
+.cell:nth-child(9) {
+  border-top: 3px solid var(--cell-border-color);
+  /* Bottom row */
+}
+
+.cell:nth-child(1),
+.cell:nth-child(4),
+.cell:nth-child(7) {
+  border-right: 3px solid var(--cell-border-color);
+  /* First column */
+}
+
+.cell:nth-child(2),
+.cell:nth-child(5),
+.cell:nth-child(8) {
+  border-left: 3px solid var(--cell-border-color);
+  border-right: 3px solid var(--cell-border-color);
+  /* Middle column */
+}
+
+.cell:nth-child(3),
+.cell:nth-child(6),
+.cell:nth-child(9) {
+  border-left: 3px solid var(--cell-border-color);
+  /* Last column */
+}
+
+#reset {
+  margin-top: 20px;
+  padding: 10px 20px;
+  font-size: 1rem;
+  cursor: pointer;
+  background-color: #00ff00;
+  color: #111;
+  border: 2px solid #00ff00;
+  transition: background-color 0.3s, box-shadow 0.3s;
+  text-shadow: 1px 1px 2px #00ff00;
+}
+
+#reset:hover {
+  background-color: #00cc00;
+  box-shadow: 0 0 10px #00ff00;
+}
+
+#status {
+  margin-top: 15px;
+  font-size: 1.2rem;
+}
+
+/* HTML: <div class="loader"></div> */
+.loader {
+  width: 50px;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  padding: 6px;
+  background:
+    conic-gradient(from 135deg at top, currentColor 90deg, #0000 0) 0 calc(50% - 4px)/17px 8.5px,
+    radial-gradient(farthest-side at bottom left, #0000 calc(100% - 6px), currentColor calc(100% - 5px) 99%, #0000) top right/50% 50% content-box content-box,
+    radial-gradient(farthest-side at top, #0000 calc(100% - 6px), currentColor calc(100% - 5px) 99%, #0000) bottom /100% 50% content-box content-box;
+  background-repeat: no-repeat;
+  animation: l11 1s infinite linear;
+}
+
+@keyframes l11 {
+  100% {
+    transform: rotate(1turn)
+  }
+}
+
+.waiting-container {
+  color: white;
+  min-width: 300px;
+  max-width: 500px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+#game-link {
+  margin: 20px 0;
+  padding: 17px;
+  border: none;
+  border-radius: 4px;
+  background-color: #333;
+  color: white;
+  font-size: 1rem;
+  width: 100%;
+  max-width: 100%;
+
+}
+
+button {
+  margin: 10px;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  background-color: #007bff;
+  color: white;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+button:hover {
+  background-color: #0056b3;
+}
+
+.players-info span {
+  color: white;
+}
+
+.players-info {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+  /* Reduced margin for compactness */
+  padding: 5px;
+  /* Reduced padding to make it smaller */
+  background-color: #333;
+  /* Darker background */
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.player {
+  text-align: center;
+  flex: 1;
+  padding: 5px;
+  /* Reduced padding inside the player block */
+  border-radius: 8px;
+  font-weight: bold;
+  color: #fff;
+  /* White text for contrast against dark background */
+}
+
+.you {
+  background-color: #2ecc71;
+  /* Dark green for 'You' */
+  border: 2px solid #27ae60;
+}
+
+.opponent {
+  background-color: #e74c3c;
+  /* Dark red for 'Opponent' */
+  border: 2px solid #c0392b;
+}
+
+.player-symbol {
+  display: block;
+  font-size: 18px;
+  /* Smaller font for compactness */
+  margin-top: 5px;
+}
+
+.currentMove-symbol {
+  color: white;
+}
+
+/* Modal Styles */
+.modal {
+  display: none;
+  /* Hidden by default */
+  position: absolute;
+  /* Stay in place */
+  top: 50%;
+  /* Position 50% from top */
+  left: 50%;
+  /* Position 50% from left */
+  transform: translate(-50%, -50%);
+  /* Translate by 50% to center */
+  width: 100%;
+  /* Full width */
+  height: 100%;
+  /* Full height */
+  background-color: rgba(0, 0, 0, 0.5);
+  /* Black background with opacity */
+  z-index: 1000;
+  /* Sit on top */
+}
+
+/* Modal Content Styles */
+.modal-content {
+  background-color: #333;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 300px;
+  /* Set a width */
+  text-align: center;
+  box-shadow: 0px 0px 10px rgba(0, 255, 0, 0.5);
+  border-radius: 8px;
+  margin: 0 auto;
+}
+.model-message{
+  color:var(--cell-border-color);
+}
+
+.modal-buttons {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 20px;
+}
+
+.modal-buttons button {
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.modal-buttons button#confirmReset {
+  background-color: #4CAF50;
+  color: white;
+}
+
+.modal-buttons button#cancelReset {
+  background-color: #f44336;
+  color: white;
+}
+
+/* Optional: Hover effects for buttons */
+.modal-buttons button:hover {
+  opacity: 0.8;
+}
+
+/* Modal Styles */
+.modal2 {
+  display: none;
+  /* Hidden by default */
+  position: absolute;
+  /* Stay in place */
+  top: 50%;
+  /* Position 50% from top */
+  left: 50%;
+  /* Position 50% from left */
+  transform: translate(-50%, -50%);
+  /* Translate by 50% to center */
+  width: 100%;
+  /* Full width */
+  height: 100%;
+  /* Full height */
+  background-color: rgba(0, 0, 0, 0.5);
+  /* Black background with opacity */
+  z-index: 1000;
+  /* Sit on top */
+}
+
+/* Modal Content Styles */
+.modal-content2 {
+  background-color: #333;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 300px;
+  /* Set a width */
+  text-align: center;
+  box-shadow: 0px 0px 10px rgba(0, 255, 0, 0.5);
+  border-radius: 8px;
+  margin: 0 auto;
+}
+.model-message2{
+  color:var(--cell-border-color);
+}
+
+
+.modal-buttons2 {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 20px;
+}
+
+.modal-buttons2 button {
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.modal-buttons2 button#confirmReset {
+  background-color: #4CAF50;
+  color: white;
+}
+
+.modal-buttons2 button#cancelReset {
+  background-color: #f44336;
+  color: white;
+}
+.cancelReset2{
+  background-color: #f44336;
+  color: white;
+}
+/* Optional: Hover effects for buttons */
+.modal-buttons2 button:hover {
+  opacity: 0.8;
+}
+
+
+.lds-ring {
+  display: inline-block;
+  position: relative;
+  width: 40px;
+  height: 40px;
+  color: white;
+  /* Option 1: Set the color to white */
+}
+
+.lds-ring,
+.lds-ring div {
+  box-sizing: border-box;
+}
+
+.lds-ring div {
+  box-sizing: border-box;
+  display: block;
+  position: absolute;
+  width: 32px;
+  height: 32px;
+  margin: 8px;
+  border: 4px solid white;
+  /* Option 2: Set the border color to white */
+  border-radius: 50%;
+  animation: lds-ring 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+  border-color: white transparent transparent transparent;
+  /* Option 2: Set the border color to white */
+}
+
+.lds-ring div:nth-child(1) {
+  animation-delay: -0.45s;
+}
+
+.lds-ring div:nth-child(2) {
+  animation-delay: -0.3s;
+}
+
+.lds-ring div:nth-child(3) {
+  animation-delay: -0.15s;
+}
+
+@keyframes lds-ring {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.reset-loading-message {
+  display: none;
+}
+
+.reset-loading-message p {
+  color: white;
+}
+
+/* Modal base styles */
+#GameStatus {
+  display: none;
+  /* Hidden initially */
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translateX(100vw);
+  /* Start outside the right edge */
+  width: 300px;
+  height: 100px;
+  background-color: #333;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 255, 0, 0.5);
+  color: #00ff00;
+  text-align: center;
+  z-index: 1000;
+  opacity: 0;
+}
+
+/* Animation for modal */
+@keyframes modalInOut {
+  0% {
+    transform: translateX(100vw);
+    /* Start from right */
+    opacity: 0;
+  }
+
+  10% {
+    transform: translate(-50%, -50%);
+    /* Move to center */
+    opacity: 1;
+  }
+
+  90% {
+    transform: translate(-50%, -50%);
+    /* Stay in center */
+    opacity: 1;
+  }
+
+  100% {
+    transform: translateX(-100vw);
+    /* Exit to left */
+    opacity: 0;
+  }
+}
+
+/* Apply the animation to modal */
+#GameStatus.show {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  animation: modalInOut 3s ease-in-out forwards;
+  /* 3 seconds for full cycle */
+}
+
+#connectionStatus {
+  display: none;
+  /* Hidden initially */
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  /* Start outside the right edge */
+  width: 300px;
+  height: 100px;
+  background-color: #333;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 255, 0, 0.5);
+  color: #00ff00;
+  text-align: center;
+  z-index: 1000;
+}
+
+#connectionStatus span {
+  color: white;
+
+}

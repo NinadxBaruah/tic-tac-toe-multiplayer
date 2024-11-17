@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!-- Open Graph meta tags -->
+  <meta property="og:title" content="Tic-Tac-Toe: Offline & Multiplayer" />
+  <meta property="og:description" content="Play Tic-Tac-Toe offline or challenge your friends in multiplayer mode! Simple, fun, and engaging." />
+  <meta property="og:url" content="https://www.ninadbaurah.me/projects/tic-tac-toe" />
+  <meta property="og:image" content="/image/tic-tac-toe-preview.svg" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Tic-Tac-Toe Game" />
+  <link rel="stylesheet" href="/css/opponent-game-board.css" />
+  <title>Document</title>
+</head>
+
+<body>
+  <!-- <div class="waiting-container">
+      <h1>Waiting For Player to Join</h1>
+      <div class="loader"></div>
+      <input type="text" id="game-link" value="https://example.com/game-link" readonly/>
+      <button id="copy-link">Copy Link</button>
+    <button id="redirect">Go to Game</button> -->
+  </div>
+
+  <div class="game-container">
+    <a href="/" style="text-decoration: none; cursor: pointer;">
+      <h1 id="logo">Tic-Tac-Toe</h1>
+    </a>
+    <div class="players-info">
+      <div class="player you">
+        <span>You</span>
+        <span class="player-symbol"><%= roomDetails.symbol %></span>
+        <span class="countdown" id="you-countdown"></span>
+      </div>
+      <div class="player opponent">
+        <span>Opponent</span>
+        <span class="player-symbol"><%= roomDetails.symbol == 'X' ? 'O' : 'X' %></span>
+        <span class="countdown" id="opponent-countdown"></span>
+      </div>
+    </div>
+    <div class="currentMove">
+      <span class="currentMove-symbol"><%= roomDetails.firstMove %></span>
+    </div>
+    <div id="board" class="board">
+      <div class="cell" data-index="0"></div>
+      <div class="cell" data-index="1"></div>
+      <div class="cell" data-index="2"></div>
+      <div class="cell" data-index="3"></div>
+      <div class="cell" data-index="4"></div>
+      <div class="cell" data-index="5"></div>
+      <div class="cell" data-index="6"></div>
+      <div class="cell" data-index="7"></div>
+      <div class="cell" data-index="8"></div>
+    </div>
+    <button id="reset">Reset Game</button>
+    <!-- Reset Confirmation Modal -->
+    <div id="resetModal" class="modal">
+      <div class="modal-content">
+        <p class="model-message">Are you sure you want to reset or replay the game?</p>
+        <div class="modal-buttons">
+          <button id="confirmReset">Yes</button>
+          <button id="cancelReset">No</button>
+        </div>
+      </div>
+    </div>
+    <!-- Reset Confirmation Modal When request is coming from opponent -->
+    <div id="resetModal2" class="modal2">
+      <div class="modal-content2">
+        <p class="model-message2"></p>
+        <div class="modal-buttons2">
+          <button id="confirmReset2">Yes</button>
+          <button id="cancelReset2">No</button>
+        </div>
+      </div>
+    </div>
+    <div id="GameStatus">
+      <span class="game-status-message"></span>
+    </div>
+    <div id="connectionStatus">
+      <span class="connection-status-message">Player Left or Connection Lost!</span>
+      <button id="showConnectionMessageButton">HomePage</button>
+    </div>
+    <div class="reset-loading-message">
+      <div class="lds-ring">
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
+      <p>Waiting for player response...</p>
+    </div>
+  </div>
+  <script>
+    window.roomDetails = <%-  JSON.stringify(roomDetails)  %>;
+  </script>
+  <script src="/js/opponent-game-board.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Error</title>
+  </head>
+  <body>
+    <h1 style="text-align: center">SomeOne has already Joined!</h1>
+    <h3 style="text-align: center; color: green;">Redirecting to HomePage.......</h3>
+  </body>
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      setTimeout(() => {
+       const url = new URL(window.location.href)
+       window.location.href = url.origin + "/multiplayer"
+      }, 2000);
+    });
+  </script>
+</html>

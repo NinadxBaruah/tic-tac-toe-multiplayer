@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/css/offlineGameBoard.css" />
+    <title>Document</title>
+  </head>
+
+  <body>
+    <div class="game-container">
+      <a href="/" style="text-decoration: none; cursor: pointer;"><h1 id="logo">Tic-Tac-Toe</h1></a>
+      <div id="score">
+        <p>You: <span id="player-score">0</span></p>
+        <span class="score-divider"></span>
+        <p>Ai: <span id="computer-score">0</span></p>
+      </div>
+      <div id="board" class="board">
+        <div class="cell" data-index="0"></div>
+        <div class="cell" data-index="1"></div>
+        <div class="cell" data-index="2"></div>
+        <div class="cell" data-index="3"></div>
+        <div class="cell" data-index="4"></div>
+        <div class="cell" data-index="5"></div>
+        <div class="cell" data-index="6"></div>
+        <div class="cell" data-index="7"></div>
+        <div class="cell" data-index="8"></div>
+    </div>
+
+      <button id="reset">Reset Game</button>
+      <div id="resetModal" class="modal">
+        <div class="modal-content">
+          <p class="model-message">Do you want to reset the Game?</p>
+          <div class="modal-buttons">
+            <button id="confirmReset">Yes</button>
+            <button id="cancelReset">No</button>
+          </div>
+        </div>
+      </div>
+      <div id="GameStatus">
+        <span class="game-status-message"></span>
+      </div>
+    </div>
+    <script src="/js/offlineGameBoard.js"></script>
+  </body>
+</html>

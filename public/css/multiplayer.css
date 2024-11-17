@@ -1,0 +1,101 @@
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
+*{
+    /* outline: 1px solid white; */
+}
+body {
+    font-family: 'Press Start 2P', cursive;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    margin: 0;
+    background-color: #111;
+    color: #00ff00;
+}
+
+.container {
+    background-color: #222;
+    padding: 40px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 255, 0, 0.3);
+    text-align: center;
+    width: 250px;
+    border: 2px solid #00ff00;
+    position: absolute;
+    transform: translateY(-50%);
+    top: 50%;
+
+}
+
+h1 {
+    color: #00ff00;
+    margin-bottom: 30px;
+    font-size: 1.5rem;
+    text-shadow: 2px 2px 4px #00ff00;
+}
+
+.option-container, .choose-symbol, .first-move, .timestamp {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.choose-symbol span, .first-move span, .timestamp span {
+    font-weight: bold;
+    font-size: 1rem;
+    color: #00ff00;
+}
+
+.symbols, .first-move-options, .timestamp-options {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+.symbols span, .first-move-options span, .timestamp-options span {
+    padding: 10px 20px;
+    border-radius: 5px;
+    border: 2px solid #00ff00;
+    color: #00ff00;
+    background-color: #111;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+    text-shadow: 1px 1px 2px #00ff00;
+}
+
+.symbols span:hover, .first-move-options span:hover, .timestamp-options span:hover {
+    background-color: #00ff00;
+    color: #111;
+    box-shadow: 0 0 10px #00ff00;
+}
+
+.symbols span.selected, .first-move-options span.selected, .timestamp-options span.selected {
+    background-color: #00ff00;
+    color: #111;
+}
+
+.create-game-button {
+    margin-top: 20px;
+    padding: 10px 20px;
+    font-size: 1rem;
+    background-color: #00ff00;
+    color: #111;
+    border: 2px solid #00ff00;
+    border-radius: 5px;
+    cursor: pointer;
+    font-family: 'Press Start 2P', cursive;
+    transition: background-color 0.3s, box-shadow 0.3s;
+    text-shadow: 1px 1px 2px #00ff00;
+}
+
+.create-game-button:hover {
+    background-color: #00cc00;
+    box-shadow: 0 0 10px #00ff00;
+}
+
+.create-game-button:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(0, 255, 0, 0.5);
+}
