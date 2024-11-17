@@ -4,7 +4,7 @@ Experience the classic Tic Tac Toe game with modern features! This project allow
 
 ## Demo Video
 [![Tic Tac Toe Demo](./public/gifs/priview.gif)](https://ninadbaruah.me/videos/tic-tac-toe-project.mp4)
-
+[![Demo Video](https://ninadbaruah.me/videos/tic-tac-toe-project.mp4)
 ## Features
 
 ### Game Modes
