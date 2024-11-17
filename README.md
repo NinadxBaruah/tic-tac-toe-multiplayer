@@ -3,7 +3,7 @@
 Experience the classic Tic Tac Toe game with modern features! This project allows players to enjoy the game offline or challenge friends in real-time multiplayer mode. Built with **WebSockets**, **HTML**, **CSS**, and **Node.js**, this game is deployed and ready to play [here](https://ninadbaruah.me/projects/tic-tac-toe).
 
 ## Demo Video
-[![Tic Tac Toe Demo](./public/gifs/preview.gif)](https://ninadbaruah.me/videos/tic-tac-toe-project.mp4)
+[![Tic Tac Toe Demo](./public/gifs/priview.gif)](https://ninadbaruah.me/videos/tic-tac-toe-project.mp4)
 
 Click the image above to watch the video demo.
 
